@@ -1,6 +1,10 @@
-
 # C# gRPC Example
 gRPC Server and Client example written in C#
+
+## Download
+you can download the win-x86 self-contained version of Server and Client from [here](https://github.com/mohammadius/CSharpGrpcExample/releases/download/release/grpc_example_win-x86.7z).
+
+or download the project and build with `dotnet build` command. ([.NET 6 SDK](https://dotnet.microsoft.com/en-us/download) is required for building)
 
 ## Unary example
 ### protobuf contract
