@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "GrpcExample";
+
+package example;
+
+service ExampleService {
+  // Unary
+  rpc SayHello (HelloRequest) returns (HelloReply);
+
+  // Server streaming
+  rpc GetTimes (TimeRequest) returns (stream TimeResponse);
+
+  // Client streaming
+  rpc AddNumbers (stream AddRequest) returns (AddResponse);
+
+  // Bi-directional streaming (not implementing for because it's hard to showcase properly)
+  // rpc StreamingBothWays (stream ExampleRequest) returns (stream ExampleResponse);
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
+
+message TimeRequest {
+  int32 count = 1;
+}
+
+message TimeResponse {
+  int32 index = 1;
+  google.protobuf.Timestamp time = 2;
+}
+
+message AddRequest {
+  int32 number = 1;
+}
+
+message AddResponse {
+  int32 sum = 1;
+  repeated int32 numbers = 2;
+}
