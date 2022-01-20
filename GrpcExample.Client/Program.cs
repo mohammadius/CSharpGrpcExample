@@ -3,7 +3,7 @@ using Grpc.Core;
 using Grpc.Net.Client;
 using GrpcExample;
 
-using var channel = GrpcChannel.ForAddress("https://localhost:7015");
+using var channel = GrpcChannel.ForAddress("https://localhost:5001");
 var client = new ExampleService.ExampleServiceClient(channel);
 
 Console.WriteLine("Unary Example.");
@@ -14,7 +14,7 @@ var helloReply = await client.SayHelloAsync(helloRequest);
 Console.WriteLine($"HelloReply: {{ Message: {helloReply.Message} }}");
 
 Console.WriteLine("\nServer streaming Example.");
-Console.WriteLine("number of DateTimes to get (default is 5):");
+Console.Write("number of DateTimes to get (default is 5): ");
 if (!int.TryParse(Console.ReadLine(), out var count))
 {
 	count = 5;
@@ -48,3 +48,6 @@ using (var addNumbers = client.AddNumbers())
 	var addResponse = await addNumbers.ResponseAsync;
 	Console.WriteLine($"addResponse: {{ Sum: {addResponse.Sum}, Numbers: [{string.Join(", ", addResponse.Numbers)}] }}");
 }
+
+Console.WriteLine("Press enter to exit...");
+Console.ReadLine();
